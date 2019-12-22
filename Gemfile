@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
+
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -38,6 +39,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Jun_add to create test user
 gem "factory_bot_rails", "~> 4.10.0"
+
+# Jun_add to set css easier 
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+# gem "autoprefixer-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
