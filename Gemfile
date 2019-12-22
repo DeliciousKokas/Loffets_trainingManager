@@ -36,9 +36,15 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Jun_add to create test user
+gem "factory_bot_rails", "~> 4.10.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Jun_add to change test tool
+  gem 'rspec-rails', '~> 3.8.0'
 end
 
 group :development do
