@@ -11,12 +11,6 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <% flash.each do |messge_type, message| %>
-      <div class="alert alert-dark">
-        <%= message %>
-      </div>
-    <% end %>
     <%= yield %>
-    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>
