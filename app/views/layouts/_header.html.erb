@@ -11,12 +11,20 @@
         </li>
       </ul>
       <ul class="navbar-nav">
+        <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "SignIn", "#", class: "active nav-link" %>
+          <%= link_to "SignOut", destroy_user_session_path, class: "active nav-link", method: :delete %>
+          <%= link_to "SignOut", destroy_user_session_path, class: "active nav-link", method: :delete %>
         </li>
-        <li class="nav-item">
-          <%= link_to "SignUp", "#", class: "active nav-link" %>
-        </li>
+
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "SignIn", new_user_session_path, class: "active nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "SignUp", new_user_registration_path, class: "active nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </div>
