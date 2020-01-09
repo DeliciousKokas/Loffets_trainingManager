@@ -3,6 +3,7 @@
 
   <% events.each do |event| %>
     <div>
+      <%= link_to event.title, events_path(start_time: event.start_time), class: "active nav-link" %>
       <%= event.title %>
     </div>
   <% end %>
