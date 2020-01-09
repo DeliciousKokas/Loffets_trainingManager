@@ -1,3 +1,25 @@
 <p>event list</p>
-<%= @event.title %>
-<%= @event.description %>
+
+
+<%= @record.title %>
+<%= @record.description %>
+<%= @record.start_time %>
+
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Set</td>
+    <td>Rep</td>
+    <td>Weight</td>
+    <td>Vol</td>
+  </tr>
+  <% @workouts.each do |workout| %>
+  <tr>
+    <td><%= workout.name %></td>
+    <td><%= workout.set %></td>
+    <td><%= workout.rep %></td>
+    <td><%= workout.weight %></td>
+    <td><%= workout.vol %></td>
+  </tr>
+  <% end %>
+</table>

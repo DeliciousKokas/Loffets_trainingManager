@@ -1,10 +1,9 @@
-<%= month_calendar events: @event do |date, events| %>
+<%= month_calendar events: @records do |date, records| %>
   <%= date.day %>
 
-  <% events.each do |event| %>
+  <% records.each do |record| %>
     <div>
-      <%= link_to event.title, events_path(start_time: event.start_time), class: "active nav-link" %>
-      <%= event.title %>
+      <%= link_to record.title, events_path(start_time: record.start_time), class: "btn btn-info" %> 
     </div>
   <% end %>
 <% end %>

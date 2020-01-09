@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
   def main
-    @event = Record.all
+    @records = Record.all
   end
 
   def events
-    @event = Record.find_by(start_time: params[:start_time])
+    @record = Record.find_by(start_time: params[:start_time])
+    @workouts = @record.workout
 
 
     # link_to "+ Service", new_my_service_path(:my_service => { :account_id => acct.id })
