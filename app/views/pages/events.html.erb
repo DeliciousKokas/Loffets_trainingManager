@@ -12,6 +12,7 @@
     <td>Rep</td>
     <td>Weight</td>
     <td>Vol</td>
+    <td></td>
   </tr>
   <% @workouts.each do |workout| %>
   <tr>
@@ -20,6 +21,9 @@
     <td><%= workout.rep %></td>
     <td><%= workout.weight %></td>
     <td><%= workout.vol %></td>
+    <td>
+      <%= link_to "delete", events_path(id: workout.id), method: :delete, class: "btn btn-info" %>
+    </td>
   </tr>
   <% end %>
 </table>
