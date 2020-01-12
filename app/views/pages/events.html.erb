@@ -23,3 +23,28 @@
   </tr>
   <% end %>
 </table>
+
+<%= form_for(@new_workout, url:events_path) do |f| %>
+  <div class="form-group row">
+    <%= f.hidden_field :record_id %>
+    <div class="form-group col">
+      <%= f.text_field :name, class: 'form-control', placeholder: "Name" %>
+    </div>
+
+    <div class="form-group col">
+      <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
+    </div>
+    
+    <div class="form-group col">
+      <%= f.text_field :rep, class: 'form-control', placeholder: "Rep"  %>
+    </div>
+
+    <div class="form-group col">
+      <%= f.text_field :weight, class: 'form-control', placeholder: "Weight"  %>
+    </div>
+
+    <div class="actions col">
+      <%= f.submit "Add", class: "btn btn-info" %>
+    </div>
+  </div>
+<% end %>
