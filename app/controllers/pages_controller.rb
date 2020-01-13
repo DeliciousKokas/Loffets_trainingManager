@@ -2,7 +2,14 @@ class PagesController < ApplicationController
   # before_action :calculate_vol, only: :create
 
   def main
-    @records = current_user.record.all  
+    @records = current_user.record.all
+    @new_record = current_user.record.new
+  end
+
+  def new_record
+    @new_record = Record.new(new_record_params)
+    @new_record.save
+    redirect_to "/main"
   end
 
   def events
@@ -35,5 +42,9 @@ class PagesController < ApplicationController
 
   def workout_params
     params.require(:workout).permit(:record_id, :name, :set, :rep, :weight)
+  end
+
+  def new_record_params
+    params.require(:record).permit(:user_id, :title, :description, :start_time)
   end
 end 
