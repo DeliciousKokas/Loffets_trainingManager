@@ -1,9 +1,6 @@
-<p>event list</p>
-
-
-<%= @record.title %>
-<%= @record.description %>
-<%= @record.start_time %>
+<h3><%= @record.title %></h3>
+<h4><%= @record.description %></h4>
+<%= @record.start_time.to_date %>
 
 <table class="table">
   <tr>

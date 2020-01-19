@@ -14,7 +14,7 @@ class PagesController < ApplicationController
 
   def events
     @record = current_user.record.find_by(start_time: params[:start_time])
-    @workouts = @record.workout
+    @workouts = @record.workout.all
     @new_workout = @record.workout.new
   end
 
