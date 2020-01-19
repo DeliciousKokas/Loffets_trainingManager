@@ -5,7 +5,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root
     volumes:
-    - ../mysql-confd:/etc/mysql/conf.d  
+      - ../mysql-confd:/etc/mysql/conf.d  
+    ports:
+      - "3306:3306"
 
   web:
     build: .
