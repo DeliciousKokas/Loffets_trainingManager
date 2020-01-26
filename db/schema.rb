@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_09_072206) do
+ActiveRecord::Schema.define(version: 2020_01_26_110138) do
+
+  create_table "myworks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_myworks_on_user_id"
+  end
 
   create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.datetime "start_time"
+    t.date "start_time"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,17 +45,17 @@ ActiveRecord::Schema.define(version: 2020_01_09_072206) do
   end
 
   create_table "workouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
     t.integer "set"
     t.integer "rep"
     t.float "weight"
     t.float "vol"
-    t.bigint "record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["record_id"], name: "index_workouts_on_record_id"
+    t.bigint "mywork_id"
+    t.index ["mywork_id"], name: "index_workouts_on_mywork_id"
   end
 
+  add_foreign_key "myworks", "users"
   add_foreign_key "records", "users"
-  add_foreign_key "workouts", "records"
+  add_foreign_key "workouts", "myworks"
 end

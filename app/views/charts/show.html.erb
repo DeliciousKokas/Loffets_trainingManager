@@ -1,0 +1,3 @@
+
+<%= column_chart @records.group_by_day(:start_time, format: "%a").count %>
+<%= column_chart @chart %>

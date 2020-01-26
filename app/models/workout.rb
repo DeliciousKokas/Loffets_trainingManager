@@ -1,4 +1,4 @@
 class Workout < ApplicationRecord
-  belongs_to :record
+  belongs_to :mywork
 
 end
