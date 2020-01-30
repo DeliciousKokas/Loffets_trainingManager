@@ -49,13 +49,16 @@ ActiveRecord::Schema.define(version: 2020_01_26_110138) do
     t.integer "rep"
     t.float "weight"
     t.float "vol"
+    t.bigint "record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "mywork_id"
     t.index ["mywork_id"], name: "index_workouts_on_mywork_id"
+    t.index ["record_id"], name: "index_workouts_on_record_id"
   end
 
   add_foreign_key "myworks", "users"
   add_foreign_key "records", "users"
   add_foreign_key "workouts", "myworks"
+  add_foreign_key "workouts", "records"
 end

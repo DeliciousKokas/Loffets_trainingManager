@@ -1,6 +1,15 @@
 class ChartsController < ApplicationController
   def show
     @records = current_user.record.all
-    @chart = [['2018-10-1', 10], ['2018-10-02', 20]]
+    @name = current_user.mywork.first.name
+
+    @chart = []
+    @mywork = Mywork.first.id
+    @workouts = Workout.where(mywork_id: @mywork)
+    @workouts.each do |workout|
+      @chart.push([Record.find(workout.record_id).start_time, workout.weight])
+    end
+    
+    @dates = current_user.record.each{ |i| puts i.workout}
   end
 end
