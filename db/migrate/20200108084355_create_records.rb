@@ -3,7 +3,7 @@ class CreateRecords < ActiveRecord::Migration[5.2]
     create_table :records do |t|
       t.string :title
       t.text :description
-      t.datetime :start_time
+      t.date :start_time
       t.references :user, foreign_key: true
 
       t.timestamps
