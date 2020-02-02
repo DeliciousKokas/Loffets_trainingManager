@@ -14,6 +14,7 @@ class PagesController < ApplicationController
 
   def events
     @record = current_user.record.find_by(start_time: params[:start_time])
+    @myworks = current_user.mywork.all
     @workouts = @record.workout.all
     @new_workout = @record.workout.new
   end
@@ -41,7 +42,7 @@ class PagesController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:record_id, :name, :set, :rep, :weight)
+    params.require(:workout).permit(:record_id, :mywork_id, :set, :rep, :weight)
   end
 
   def new_record_params
