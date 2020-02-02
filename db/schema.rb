@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_31_155434) do
+ActiveRecord::Schema.define(version: 2020_01_26_110138) do
+
+  create_table "myworks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_myworks_on_user_id"
+  end
+
+  create_table "records", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.date "start_time"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "start_time"], name: "index_records_on_user_id_and_start_time"
+    t.index ["user_id"], name: "index_records_on_user_id"
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,4 +44,21 @@ ActiveRecord::Schema.define(version: 2019_12_31_155434) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "workouts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "set"
+    t.integer "rep"
+    t.float "weight"
+    t.float "vol"
+    t.bigint "record_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "mywork_id"
+    t.index ["mywork_id"], name: "index_workouts_on_mywork_id"
+    t.index ["record_id"], name: "index_workouts_on_record_id"
+  end
+
+  add_foreign_key "myworks", "users"
+  add_foreign_key "records", "users"
+  add_foreign_key "workouts", "myworks"
+  add_foreign_key "workouts", "records"
 end
