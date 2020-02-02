@@ -13,6 +13,10 @@
     </div>
 
     <div class="col-lg-4">
+      <div class="d-flex justify-content-center my-3">
+        <%= image_tag "/assets/workout.png", size: '24', class: "my-auto" %>
+        <h4 class="my-auto">Add new schedule </h4>
+      </div>
       <%= form_for(@new_record, url:main_path) do |f| %>
         <div class="form-group">
           <%= f.hidden_field :user_id %>
@@ -26,11 +30,11 @@
           </div>
       
           <div class="form-group col">
-            <%= f.text_field :description, class: 'form-control', placeholder: "Description"  %>
+            <%= f.text_area :description, class: 'form-control', placeholder: "Description"  %>
           </div>
 
           <div class="actions col">
-            <%= f.submit "Add", class: "btn btn-info" %>
+            <%= f.submit "Add", class: "btn btn-info form-control" %>
           </div>
         </div>
       <% end %>

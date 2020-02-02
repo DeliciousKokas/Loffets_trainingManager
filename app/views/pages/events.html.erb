@@ -13,7 +13,7 @@
   </tr>
   <% @workouts.each do |workout| %>
   <tr>
-    <td><%= workout.mywork_id %></td>
+    <td><%= Mywork.find(workout.mywork_id).name %></td>
     <td><%= workout.set %></td>
     <td><%= workout.rep %></td>
     <td><%= workout.weight %></td>
@@ -28,6 +28,10 @@
 <%= form_for(@new_workout, url:events_path) do |f| %>
   <div class="form-group row">
     <%= f.hidden_field :record_id %>
+
+    <div class="form-group col">
+      <%= f.select :mywork_id, options_from_collection_for_select(@myworks, :id, :name), class: 'form-control' %>
+    </div>
 
     <div class="form-group col">
       <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
