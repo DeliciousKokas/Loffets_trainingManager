@@ -10,16 +10,20 @@
           <%= link_to "Test", "#", class: "nav-link" %>
         </li>
       </ul>
+
       <ul class="navbar-nav">
         <% if user_signed_in? %>
-        <li class="nav-item">
-        <%= link_to "Chart", chart_path, class: "active nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "SignOut", destroy_user_session_path, class: "active nav-link", method: :delete %>
-        </li>
-        <li class="nav-item">
-          <%= link_to current_user.email, main_path, class: "active nav-link" %>
+        <li class="nav-item dropdown">
+          <button type="button" class="bg-dark nav-item nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user.email %>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right py-1">
+            <%= link_to "Main", main_path, class: "dropdown-item" %>
+            <%= link_to "Chart", chart_path, class: "dropdown-item" %>
+            <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+          <div class="dropdown-divider my-1"></div>
+            <%= link_to "SignOut", destroy_user_session_path, class: "dropdown-item", method: :delete %>
+          </div>
         </li>
 
         <% else %>
