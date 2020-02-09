@@ -14,9 +14,7 @@
       <ul class="navbar-nav">
         <% if user_signed_in? %>
         <li class="nav-item dropdown">
-          <button type="button" class="bg-dark nav-item nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_user.email %>
-          </button>
+          <%= link_to image_tag(current_user.image.thumb.url) + current_user.email, "#", class: "active nav-link dropdown-toggle", data: {toggle:"dropdown"}, aria: {haspopup:"true", expanded:"false"} %>
           <div class="dropdown-menu dropdown-menu-right py-1">
             <%= link_to "Main", main_path, class: "dropdown-item" %>
             <%= link_to "Chart", chart_path, class: "dropdown-item" %>
