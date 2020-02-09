@@ -10,6 +10,10 @@ Rails.application.routes.draw do
 
   get '/chart', to:'charts#show'
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
 
 end
