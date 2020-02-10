@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :mywork do
-    name ""
-    description ""
-    user nil
+    sequence(:name) { |n| "mywork#{n}" }
   end
 end
