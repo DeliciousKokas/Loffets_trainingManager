@@ -6,7 +6,6 @@ RSpec.describe Workout, type: :model do
     @record = FactoryBot.create(:record, user_id:@user.id)
     @mywork = FactoryBot.create(:mywork, user_id:@user.id)
     @workout = FactoryBot.build(:workout, record_id:@record.id, mywork_id:@mywork.id)
-    puts @workout.inspect
   end
 
   it "is valid with set, rep, weight, vol, record_id and mywork_id" do

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get '/', to:'staticpages#home'
+  root to:'staticpages#home'
 
   get '/main', to:'pages#main'
   post '/main', to:'pages#new_record'
