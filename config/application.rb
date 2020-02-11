@@ -19,7 +19,7 @@ module Myapp
     config.generators do |g|
       g.test_framework :rspec,
       fixtures: false,
-      systems: true,
+      system_specs: true,
       controller_specs: false,
       view_specs: false,
       helper_specs: false,
