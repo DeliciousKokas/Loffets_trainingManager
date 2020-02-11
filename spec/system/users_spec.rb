@@ -4,18 +4,19 @@ RSpec.describe 'Users', type: :system do
 
   let(:user) {FactoryBot.create(:user)}
 
-  # it "can create new user" do
-  #   visit root_path
-  #   click_on "SignUp"
-  #   expect(page).to have_current_path "/users/sign_up"
+  it "can create new user" do
+    visit root_path
+    click_on "SignUp"
+    expect(page).to have_current_path "/users/sign_up"
 
-  #   expect {
-  #     fill_in "Email", with: "test@test.com"
-  #     fill_in "user_password", with: "Test1234!"
-  #     fill_in "user_password_confirmation", with: "Test1234!"
-  #     click_button "Sign up"
-  #   }.to change(User, :count).by(1)
-  # end
+    expect {
+      fill_in "user_email", with: "test@test.com"
+      fill_in "user_name", with: "test1234"
+      fill_in "user_password", with: "Test1234!"
+      fill_in "user_password_confirmation", with: "Test1234!"
+      click_button "Sign up"
+    }.to change(User, :count).by(1)
+  end
 
   it "can Login to user" do
     visit root_path
