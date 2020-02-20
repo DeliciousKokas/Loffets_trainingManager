@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="d-flex justify-content-center row">
+    <div class="p-2 align-self-start col-lg-4">
+      <div class="card mx-auto" style="padding:10px">
+        <div class="card-columns">
+          <%= render 'shared/img_thumb' %>
+        </div>
+        <% if @user.description %>
+          <%= @user.description %>
+        <% else %>
+          <%= link_to "自己紹介を追加する", edit_user_registration_path %>
+        <% end %>
+        <%= render 'shared/new_schedule' %>
+      </div>
+
+    </div>
+    <div class="p-2 col-lg-7">
+      <% @records.each do |record| %>
+        <div class="card mx-auto" style="padding:10px; margin-bottom:20px">
+          <div class="card-columns">
+            <%= render 'shared/img_thumb' %>
+          </div>
+          <div>
+            <h4 class="card-title"><%= link_to record.title, events_path(start_time: record.start_time) %></h4>
+            <p class="card-text"><%= record.description %></p>
+            <%= record.start_time %>
+          </div>
+          <table class="table">
+            <tr>
+              <th>Name</th>
+              <th>Set</th>
+              <th>Rep</th>
+              <th>Weight</th>
+              <th>Vol</th>
+            </tr>
+            <% record.workout.each do |workout| %>
+            <tr>
+              <td><%= workout.mywork.name %></td>
+              <td><%= workout.set %></td>
+              <td><%= workout.rep %></td>
+              <td><%= workout.weight %></td>
+              <td><%= workout.vol %></td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

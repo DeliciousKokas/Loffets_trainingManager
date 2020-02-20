@@ -83,4 +83,12 @@ RSpec.describe User, type: :model do
     expect(user_no_sym).to_not be_valid
   end
 
+  it "is invalid when description is more than 16 characters" do
+    count_200 = "a" * 200 
+    user_200_desc = FactoryBot.build(:user, description: count_200)
+    user_201_desc = FactoryBot.build(:user, description: count_200 + "201")
+    expect(user_200_desc).to be_valid
+    expect(user_201_desc).to_not be_valid
+  end
+
 end

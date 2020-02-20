@@ -13,6 +13,7 @@ class PagesController < ApplicationController
   end
 
   def events
+    @user = current_user
     @record = current_user.record.find_by(start_time: params[:start_time])
     @myworks = current_user.mywork.all
     @workouts = @record.workout.all
@@ -30,6 +31,12 @@ class PagesController < ApplicationController
     @workout = Workout.find(params[:id])
     @workout.destroy
     redirect_back(fallback_location: "/main")
+  end
+
+  def feed
+    @user = current_user
+    @records = current_user.record.all.order(start_time: "DESC")
+    @new_record = current_user.record.new
   end
 
 
