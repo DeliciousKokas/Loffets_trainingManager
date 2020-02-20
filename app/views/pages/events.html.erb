@@ -1,5 +1,9 @@
 <div class="justify-content-center">
   <div class="card mx-auto" style="width:600px">
+    <div class="card-columns">
+      <%= image_tag @user.image.thumb.url, class: "rounded-circle border border-dark" %>
+      <%= @user.name %>
+    </div>
     <h4 class="card-title"><%= @record.title %></h4>
     <p class="card-text"><%= @record.description %></p>
     <%= @record.start_time.to_date %>
