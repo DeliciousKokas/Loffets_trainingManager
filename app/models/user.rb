@@ -33,4 +33,13 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  def feed
+    following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+    Record.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id).order(created_at: "DESC")
+  end
+  
+  def feed_mine
+    Record.where("user_id = ?", id).order(created_at: "DESC")
+  end
 end
