@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   # before_action :calculate_vol, only: :create
 
+  def users
+    @users = User.where.not(id: current_user.id)
+  end
+  
   def main
     @records = current_user.record.all
     @new_record = current_user.record.new

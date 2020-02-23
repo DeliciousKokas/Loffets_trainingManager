@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <div class="d-flex justify-content-around row">
+    <div class="p-2 align-self-start col-lg-4">
+      <%= render 'shared/user_status' %>
+    </div>  
+    <div class="p-2 col-lg-7">
+      <h3><%= @title %></h3>
+        <% if @users.any? %>
+          <%= render 'shared/user_card' %>
+        <% else %>
+          <%= @title %> なし！
+        <% end %>
+    </div>
+  </div>
+</div>

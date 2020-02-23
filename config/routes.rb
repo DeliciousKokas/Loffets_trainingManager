@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root to:'staticpages#home'
 
+  get '/users/list', to:'pages#users'
+
   get '/main', to:'pages#main'
   post '/main', to:'pages#new_record'
 
@@ -18,5 +20,10 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+
+  get '/users/:id/following', to:'relationships#following', as: :following_user
+  get '/users/:id/followers', to:'relationships#followers', as: :followers_user
+
+  resources :relationships, only: [:create, :destroy]
 
 end

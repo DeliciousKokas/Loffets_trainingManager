@@ -1,0 +1,17 @@
+<div class="card mx-auto" style="padding:10px">
+  <div class="card-columns">
+    <%= image_tag current_user.image.url, class: "rounded-circle", size: "52" %>
+      <p style="margin:0px"><%= current_user.name %></p>
+      <p style="margin:0px"><%= current_user.record.count %> records</p>
+  </div>
+  <div>
+    <%= render 'shared/stats' %>
+  </div>
+  <div>
+    <% if current_user.description %>
+      <%= current_user.description %>
+    <% else %>
+      <%= link_to "自己紹介を追加する", edit_user_registration_path %>
+    <% end %>
+  </div>
+</div>
