@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   # before_action :calculate_vol, only: :create
 
   def users
-    @users = User.where.not("id = ?",current_user.id)
+    @users = current_user.search(params[:search])
   end
   
   def main
