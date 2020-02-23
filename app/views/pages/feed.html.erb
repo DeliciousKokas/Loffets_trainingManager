@@ -1,24 +1,15 @@
 <div class="container-fluid">
-  <div class="d-flex justify-content-center row">
+  <div class="d-flex justify-content-around row">
     <div class="p-2 align-self-start col-lg-4">
-      <div class="card mx-auto" style="padding:10px">
-        <div class="card-columns">
-          <%= render 'shared/img_thumb' %>
-        </div>
-        <% if @user.description %>
-          <%= @user.description %>
-        <% else %>
-          <%= link_to "自己紹介を追加する", edit_user_registration_path %>
-        <% end %>
-        <%= render 'shared/new_schedule' %>
-      </div>
-
+      <%= render 'shared/user_status' %>
+      <%= render 'shared/new_schedule' %>
     </div>
     <div class="p-2 col-lg-7">
       <% @records.each do |record| %>
         <div class="card mx-auto" style="padding:10px; margin-bottom:20px">
           <div class="card-columns">
-            <%= render 'shared/img_thumb' %>
+            <%= image_tag record.user.image.thumb.url, class: "rounded-circle", size: "32" %>
+            <%= record.user.name %>
           </div>
           <div>
             <h4 class="card-title"><%= link_to record.title, events_path(start_time: record.start_time) %></h4>

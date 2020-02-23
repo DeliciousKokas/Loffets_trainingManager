@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   # before_action :calculate_vol, only: :create
 
+  def users
+    @users = User.where.not("id = ?",current_user.id)
+  end
+  
   def main
     @records = current_user.record.all
     @new_record = current_user.record.new
@@ -35,7 +39,7 @@ class PagesController < ApplicationController
 
   def feed
     @user = current_user
-    @records = current_user.record.all.order(start_time: "DESC")
+    @records =  current_user.feed
     @new_record = current_user.record.new
   end
 
