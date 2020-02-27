@@ -13,20 +13,18 @@ class PagesController < ApplicationController
   def new_record
     @new_record = Record.new(new_record_params)
     @new_record.save
-    redirect_to "/main"
+    redirect_to events_path(start_time: @new_record.start_time)
   end
 
   def events
-    @user = current_user
     @record = current_user.record.find_by(start_time: params[:start_time])
     @myworks = current_user.mywork.all
     @workouts = @record.workout.all
-    @new_workout = @record.workout.new
   end
 
   def create
     @new_workout = Workout.new(workout_params)
-    @new_workout.vol = @new_workout.set * @new_workout.rep * @new_workout.weight
+    @new_workout.calculate_vol
     @new_workout.save
     redirect_back(fallback_location: "/main")
   end
@@ -38,7 +36,6 @@ class PagesController < ApplicationController
   end
 
   def feed
-    @user = current_user
     @records =  current_user.feed
     @new_record = current_user.record.new
   end
