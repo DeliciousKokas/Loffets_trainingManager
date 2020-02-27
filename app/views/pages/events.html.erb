@@ -1,62 +1,33 @@
 <div class="justify-content-center">
-  <div class="card mx-auto" style="width:600px">
-    <div class="card-columns">
-      <%= image_tag @user.image.thumb.url, class: "rounded-circle border border-dark" %>
-      <%= @user.name %>
-    </div>
-    <h4 class="card-title"><%= @record.title %></h4>
-    <p class="card-text"><%= @record.description %></p>
-    <%= @record.start_time.to_date %>
+  <div class="p-2 mx-auto col-lg-7">
+    <%= render partial: 'shared/record_card', locals:{record: @record} %>
 
-    <table class="table">
-      <tr>
-        <td>Name</td>
-        <td>Set</td>
-        <td>Rep</td>
-        <td>Weight</td>
-        <td>Vol</td>
-        <td></td>
-      </tr>
-      <% @workouts.each do |workout| %>
-      <tr>
-        <td><%= Mywork.find(workout.mywork_id).name %></td>
-        <td><%= workout.set %></td>
-        <td><%= workout.rep %></td>
-        <td><%= workout.weight %></td>
-        <td><%= workout.vol %></td>
-        <td>
-          <%= link_to "delete", events_path(id: workout.id), method: :delete, class: "btn btn-info" %>
-        </td>
-      </tr>
+    <div>
+      <%= form_for(:workout, url:events_path) do |f| %>
+        <div class="form-group row">
+          <%= f.hidden_field :record_id, value: @record.id %>
+
+          <div class="form-group col">
+            <%= f.select :mywork_id, options_from_collection_for_select(@myworks, :id, :name), class: 'form-control' %>
+          </div>
+
+          <div class="form-group col">
+            <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
+          </div>
+          
+          <div class="form-group col">
+            <%= f.text_field :rep, class: 'form-control', placeholder: "Rep"  %>
+          </div>
+
+          <div class="form-group col">
+            <%= f.text_field :weight, class: 'form-control', placeholder: "Weight"  %>
+          </div>
+
+          <div class="actions col">
+            <%= f.submit "Add", class: "btn btn-info" %>
+          </div>
+        </div>
       <% end %>
-    </table>
-  </div>
-
-  <div>
-    <%= form_for(@new_workout, url:events_path) do |f| %>
-      <div class="form-group row">
-        <%= f.hidden_field :record_id %>
-
-        <div class="form-group col">
-          <%= f.select :mywork_id, options_from_collection_for_select(@myworks, :id, :name), class: 'form-control' %>
-        </div>
-
-        <div class="form-group col">
-          <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
-        </div>
-        
-        <div class="form-group col">
-          <%= f.text_field :rep, class: 'form-control', placeholder: "Rep"  %>
-        </div>
-
-        <div class="form-group col">
-          <%= f.text_field :weight, class: 'form-control', placeholder: "Weight"  %>
-        </div>
-
-        <div class="actions col">
-          <%= f.submit "Add", class: "btn btn-info" %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
