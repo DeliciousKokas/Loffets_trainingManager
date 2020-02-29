@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
 
-  let(:user) {FactoryBot.create(:user)}
+  include_context "project setup"
 
   it "can create new user" do
     visit root_path
@@ -18,7 +18,7 @@ RSpec.describe 'Users', type: :system do
     }.to change(User, :count).by(1)
   end
 
-  it "can Login to user" do
+  it "can login to user" do
     visit root_path
 
     click_on "SignIn"
@@ -30,9 +30,27 @@ RSpec.describe 'Users', type: :system do
     expect(page).to have_current_path main_path
   end
 
-  it "can Login to user" do
+  it "can signout" do
     sign_in user
+    visit main_path
 
+    click_on user.name
+    click_on "SignOut"
     expect(page).to have_current_path root_path
+    expect(page).to have_content "SignIn"
   end
+  
+  it "can't edit without current password" do
+    sign_in user
+    visit root_path
+
+    click_on user.name
+    click_on "Profile"
+    expect(page).to have_current_path edit_user_registration_path
+
+    click_on "更新"
+    expect(page).to have_content "Current password can't be blank"
+
+  end
+
 end

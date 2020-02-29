@@ -6,4 +6,8 @@ class Workout < ApplicationRecord
   validates :rep, presence: true
   validates :weight, presence: true
   validates :vol, presence: true
+
+  def calculate_vol
+    self.vol = set * rep * weight
+  end
 end

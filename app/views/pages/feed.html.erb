@@ -5,37 +5,7 @@
       <%= render 'shared/new_schedule' %>
     </div>
     <div class="p-2 col-lg-7">
-      <% @records.each do |record| %>
-        <div class="card mx-auto" style="padding:10px; margin-bottom:20px">
-          <div class="card-columns">
-            <%= image_tag record.user.image.thumb.url, class: "rounded-circle", size: "32" %>
-            <%= record.user.name %>
-          </div>
-          <div>
-            <h4 class="card-title"><%= link_to record.title, events_path(start_time: record.start_time) %></h4>
-            <p class="card-text"><%= record.description %></p>
-            <%= record.start_time %>
-          </div>
-          <table class="table">
-            <tr>
-              <th>Name</th>
-              <th>Set</th>
-              <th>Rep</th>
-              <th>Weight</th>
-              <th>Vol</th>
-            </tr>
-            <% record.workout.each do |workout| %>
-            <tr>
-              <td><%= workout.mywork.name %></td>
-              <td><%= workout.set %></td>
-              <td><%= workout.rep %></td>
-              <td><%= workout.weight %></td>
-              <td><%= workout.vol %></td>
-            </tr>
-            <% end %>
-          </table>
-        </div>
-      <% end %>
+      <%= render partial: 'shared/record_card', collection: @records, as: :record %>
     </div>
   </div>
 </div>
