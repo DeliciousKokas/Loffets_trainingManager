@@ -18,7 +18,7 @@ RSpec.describe 'Users', type: :system do
     }.to change(User, :count).by(1)
   end
 
-  it "can Login to user" do
+  it "can login to user" do
     visit root_path
 
     click_on "SignIn"
@@ -30,39 +30,27 @@ RSpec.describe 'Users', type: :system do
     expect(page).to have_current_path main_path
   end
 
-  it "can Login to user with sign_in helper" do
+  it "can signout" do
     sign_in user
-    visit root_path
+    visit main_path
 
     click_on user.name
-    click_on "Main"
-    expect(page).to have_current_path main_path
-
-    expect {
-      fill_in "record_start_time", with: "2014/01/01"
-      fill_in "record_title", with: "Test"
-      fill_in "record_description", with: "Test"
-      click_on "Add"
-
-      expect(page).to have_current_path "/events?start_time=2014-01-01"
-    }.to change(user.record, :count).by(1)
-    
+    click_on "SignOut"
+    expect(page).to have_current_path root_path
+    expect(page).to have_content "SignIn"
   end
-
-  it "can Login to user with sign_in helper" do
+  
+  it "can't edit without current password" do
     sign_in user
     visit root_path
-
-    click_on user.name
-    click_on "Feed"
-    expect(page).to have_current_path feed_path
-
-    click_on user.name
-    click_on "Chart"
-    expect(page).to have_current_path chart_path
 
     click_on user.name
     click_on "Profile"
     expect(page).to have_current_path edit_user_registration_path
+
+    click_on "更新"
+    expect(page).to have_content "Current password can't be blank"
+
   end
+
 end
