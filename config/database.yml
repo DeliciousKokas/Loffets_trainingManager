@@ -51,6 +51,9 @@ test:
 #
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  database: loffets-database-1
+  host: loffets-database-1.cxsu9o1uo81z.ap-northeast-1.rds.amazonaws.com
+  reconnect: false
+  username: admin
+  password: 2gpXI1m8s6ocrTEKwRS9
+  port: 3306
