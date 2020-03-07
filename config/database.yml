@@ -51,8 +51,8 @@ test:
 #
 production:
   <<: *default
-  database: loffets-database-1
-  host: loffets-database-1.cxsu9o1uo81z.ap-northeast-1.rds.amazonaws.com
+  database: loffets-database
+  host: loffets-database.cxsu9o1uo81z.ap-northeast-1.rds.amazonaws.com
   reconnect: false
   username: admin
   password: 2gpXI1m8s6ocrTEKwRS9
