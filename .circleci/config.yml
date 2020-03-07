@@ -27,3 +27,9 @@ jobs:
       - run:
           name: Rspec
           command: bundle exec rspec
+
+      - store_test_results:
+        path: /tmp/test-results
+      - store_artifacts:
+        path: /tmp/test-results
+        destination: test-results
