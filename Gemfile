@@ -65,6 +65,7 @@ group :development, :test do
 
   # Jun_add to change test tool
   gem 'rspec-rails', '~> 3.8.0'
+  gem 'rspec_junit_formatter'
 end
 
 group :development do
