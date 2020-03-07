@@ -6,7 +6,7 @@
 
         <% records.each do |record| %>
           <div>
-            <%= link_to image_tag("/assets/workout.png", width: '18') + "Details", events_path(start_time: record.start_time), class: "text-muted text-center" %> 
+            <%= link_to image_tag("workout.png", width: '18') + "Details", events_path(start_time: record.start_time), class: "text-muted text-center" %> 
           </div>
         <% end %>
       <% end %>
