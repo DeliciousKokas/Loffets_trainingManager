@@ -5,9 +5,9 @@ orbs:
   aws-ecs: circleci/aws-ecs@0.0.3
 
 workflows:
-  build:
+  build-and-deploy:
     jobs:
-      - build:
+      - test:
           docker:
             - image: circleci/ruby:2.6.1-node-browsers
               environment:
@@ -38,10 +38,6 @@ workflows:
             - run: bundle exec rake db:create
             - run: bundle exec rake db:schema:load
 
-      - test:
-          requires:
-            - build
-          steps:
             - run:
                 name: run tests
                 command: |
