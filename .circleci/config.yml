@@ -63,7 +63,7 @@ workflows:
 
       - aws-ecr/build_and_push_image:
           requires:
-            - test
+            - build
           account-url: "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}
           .amazonaws.com"
           repo: "loffets-ecr"
