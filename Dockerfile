@@ -18,4 +18,4 @@ WORKDIR /myapp
 ADD ./Gemfile .
 ADD ./Gemfile.lock .
 RUN bundle install
-COPY COPY . /myapp
+COPY . /myapp
