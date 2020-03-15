@@ -74,4 +74,4 @@ workflows:
           aws-region: ${AWS_DEFAULT_REGION}
           family: "loffets-app-task"
           cluster-name: "loffets-cluster"
-          container-image-name-updates: "container=loffets-service,tag=${CIRCLE_SHA1}"
+          container-image-name-updates: "container=loffets-app,tag=${CIRCLE_SHA1}"
