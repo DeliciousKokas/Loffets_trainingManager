@@ -72,6 +72,6 @@ workflows:
           requires:
             - aws-ecr/build_and_push_image
           aws-region: ${AWS_DEFAULT_REGION}
-          family: "loffets-app-task"
+          family: "loffets-service"
           cluster-name: "loffets-cluster"
           container-image-name-updates: "container=loffets-app,tag=${CIRCLE_SHA1}"
