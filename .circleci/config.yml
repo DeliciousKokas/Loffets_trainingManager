@@ -63,6 +63,7 @@ workflows:
       - aws-ecr/build-and-push-image:
           requires:
             - build
+          repo: "loffets-ecr"
           tag: "${CIRCLE_SHA1}"
 
       - aws-ecs/deploy-service-update:
