@@ -2,7 +2,7 @@ version: 2.1
 
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.1
-  aws-ecs: circleci/aws-ecs@0.0.3
+  aws-ecs: circleci/aws-ecs@1.1.0
 
 jobs:
   build:
@@ -69,7 +69,6 @@ workflows:
       - aws-ecs/deploy-service-update:
           requires:
             - aws-ecr/build-and-push-image
-          aws-region: ${AWS_DEFAULT_REGION}
           family: "loffets-service"
           cluster-name: "loffets-cluster"
           container-image-name-updates: "container=loffets-app,tag=${CIRCLE_SHA1}"
