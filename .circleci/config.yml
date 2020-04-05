@@ -5,7 +5,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@1.1.0
 
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
         environment:
@@ -57,16 +57,22 @@ jobs:
 
 workflows:
   build-and-deploy:
-    jobs:
+    test:
       - build
 
       - aws-ecr/build-and-push-image:
+          branches:
+            only:
+              - master
           requires:
             - build
           repo: "loffets-ecr"
           tag: "${CIRCLE_SHA1}"
 
       - aws-ecs/deploy-service-update:
+          branches:
+            only:
+              - master
           requires:
             - aws-ecr/build-and-push-image
           family: "loffets-service"
