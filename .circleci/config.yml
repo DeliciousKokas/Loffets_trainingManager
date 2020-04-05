@@ -57,15 +57,15 @@ jobs:
 
 workflows:
   build-and-deploy:
-    test:
-      - build
+    jobs:
+      - test
 
       - aws-ecr/build-and-push-image:
           branches:
             only:
               - master
           requires:
-            - build
+            - test
           repo: "loffets-ecr"
           tag: "${CIRCLE_SHA1}"
 
