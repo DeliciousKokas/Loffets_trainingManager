@@ -1,7 +1,11 @@
 version: 2.1
 
+orbs:
+  aws-ecr: circleci/aws-ecr@6.7.1
+  aws-ecs: circleci/aws-ecs@1.1.0
+
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.6.1-node-browsers
         environment:
@@ -10,7 +14,6 @@ jobs:
         environment:
           MYSQL_ROOT_PASSWORD: 'root'
           MYSQL_DATABASE: myapp_test
-    working_directory: ~/repo
 
     steps:
       - checkout
@@ -28,6 +31,7 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
 
+      - run: mv config/database.yml.ci config/database.yml
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
@@ -50,3 +54,27 @@ jobs:
       - store_artifacts:
           path: /tmp/test-results
           destination: test-results
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - test
+
+      - aws-ecr/build-and-push-image:
+          filters:
+            branches:
+              only: master
+          requires:
+            - test
+          repo: "loffets-ecr"
+          tag: "${CIRCLE_SHA1}"
+
+      - aws-ecs/deploy-service-update:
+          filters:
+            branches:
+              only: master
+          requires:
+            - aws-ecr/build-and-push-image
+          family: "loffets-service"
+          cluster-name: "loffets-cluster"
+          container-image-name-updates: "container=loffets-app,tag=${CIRCLE_SHA1}"
