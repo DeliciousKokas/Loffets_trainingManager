@@ -61,18 +61,18 @@ workflows:
       - test
 
       - aws-ecr/build-and-push-image:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only: master
           requires:
             - test
           repo: "loffets-ecr"
           tag: "${CIRCLE_SHA1}"
 
       - aws-ecs/deploy-service-update:
-          branches:
-            only:
-              - master
+          filters:
+            branches:
+              only: master
           requires:
             - aws-ecr/build-and-push-image
           family: "loffets-service"
