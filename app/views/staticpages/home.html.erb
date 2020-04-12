@@ -1,5 +1,13 @@
-<main class="container-fluid">
-<%= image_tag("hamburger.jpg", width:"100%") %>
+<main class="container-fluid" style="position:relative">
+  <%= image_tag("workout/1.jpg", width:"100%") %>
+
+  <div class="container-fluid" style="position: absolute; top: 30%; text-align: center">
+    <div class="container-fluid" style="background: rgba(192,192,192,0.4); color:#ffffff; font-size: 5vmin; font-weight: bold; margin: 15px">
+      <p>筋肉トレーニングをより効果的に</p>
+      <p>あなたのパーソナルマネージャー</p>
+    </div>
+    <%= link_to "Register Now!", new_user_registration_path, class: "btn btn-outline-warning btn-lg"%>
+  </div>
   <div class="row">
     <div class="col-12">
 
