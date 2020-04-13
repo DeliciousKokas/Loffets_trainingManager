@@ -17,6 +17,19 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
+p{
+  margin: 0px;
+}
+
 .container-fluid{
   padding: 0px;
+}
+
+.fadeIn {
+  opacity: 0;
+  transition: 2s;
+}
+
+.fadeIn.show {
+  opacity: 1;
 }

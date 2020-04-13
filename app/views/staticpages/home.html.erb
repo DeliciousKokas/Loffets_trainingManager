@@ -2,7 +2,7 @@
   <%= image_tag("workout/1.jpg", width:"100%") %>
 
   <div class="container-fluid" style="position: absolute; top: 30%; text-align: center">
-    <div class="container-fluid" style="background: rgba(192,192,192,0.4); color:#ffffff; font-size: 5vmin; font-weight: bold; margin: 15px">
+    <div class="container-fluid fadeIn" style="background: rgba(192,192,192,0.4); color:#ffffff; font-size: 5vmin; font-weight: bold; padding: 10px; margin-bottom: 20px">
       <p>筋肉トレーニングをより効果的に</p>
       <p>あなたのパーソナルマネージャー</p>
     </div>
@@ -10,7 +10,12 @@
   </div>
   <div class="row">
     <div class="col-12">
-
     </div>
   </div>
 </main>
+
+<script>
+$(function() {
+  $('.fadeIn').addClass('show');
+});
+</script>

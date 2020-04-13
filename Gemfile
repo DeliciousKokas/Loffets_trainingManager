@@ -37,25 +37,25 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
-# Jun_add to create test user
+# add to create test user
 gem "factory_bot_rails", "~> 4.10.0"
 
-# Jun_add to set css easier 
+# add to set css easier 
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 # gem "autoprefixer-rails"
 
-# Jun_add to make auth system
+# add to make auth system
 gem 'devise'
 
-# Jun_add to make calendar
+# add to make calendar
 gem "simple_calendar", "~> 2.0"
 
-# Jun_add to make chart
+# add to make chart
 gem "chartkick"
 gem 'groupdate'
 
-# Jun_to upload image
+# to upload image
 gem 'carrierwave'
 gem 'rmagick'
 
@@ -63,7 +63,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
-  # Jun_add to change test tool
+  # add to change test tool
   gem 'rspec-rails', '~> 3.8.0'
   gem 'rspec_junit_formatter'
 end
