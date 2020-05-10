@@ -35,6 +35,16 @@ class PagesController < ApplicationController
     redirect_back(fallback_location: "/main")
   end
 
+  def myworks
+    @myworks = current_user.mywork.all
+  end
+
+  def myworks_create
+    @new_mywork = Mywork.new(mywork_params)
+    @new_mywork.save
+    redirect_back(fallback_location: "/main")
+  end
+
   def feed
     @records =  current_user.feed
     @new_record = current_user.record.new
@@ -53,7 +63,12 @@ class PagesController < ApplicationController
     params.require(:workout).permit(:record_id, :mywork_id, :set, :rep, :weight)
   end
 
+  def mywork_params
+    params.require(:mywork).permit(:user_id, :name, :description)
+  end
+
   def new_record_params
     params.require(:record).permit(:user_id, :title, :description, :start_time)
   end
+
 end 
