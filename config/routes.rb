@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   post '/events', to:'pages#create'
   delete '/events', to:'pages#destroy'
 
+  get '/myworks', to:'pages#myworks'
+  post '/myworks', to:'pages#myworks_create'
+
   get '/feed', to:'pages#feed'
 
   get '/chart', to:'charts#show'

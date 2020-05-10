@@ -4,30 +4,20 @@
 
     <div>
       <%= form_for(:workout, url:events_path) do |f| %>
-        <div class="form-group row">
+        <div class="input-group">
           <%= f.hidden_field :record_id, value: @record.id %>
 
-          <div class="form-group col">
-            <%= f.select :mywork_id, options_from_collection_for_select(@myworks, :id, :name), class: 'form-control' %>
-          </div>
+          <%= f.select :mywork_id, options_from_collection_for_select(@myworks, :id, :name), {}, {class: 'custom-select'} %>
+          <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
+          <%= f.text_field :rep, class: 'form-control', placeholder: "Rep"  %>
+          <%= f.text_field :weight, class: 'form-control', placeholder: "Weight"  %>
 
-          <div class="form-group col">
-            <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
-          </div>
-          
-          <div class="form-group col">
-            <%= f.text_field :rep, class: 'form-control', placeholder: "Rep"  %>
-          </div>
-
-          <div class="form-group col">
-            <%= f.text_field :weight, class: 'form-control', placeholder: "Weight"  %>
-          </div>
-
-          <div class="actions col">
-            <%= f.submit "Add", class: "btn btn-info" %>
+          <div class="input-group-append">
+            <%= f.submit "レコードを追加", class: "btn btn-warning" %>
           </div>
         </div>
       <% end %>
+      <%= link_to " 実施したトレーニングが一覧にいなかったら?", myworks_path %>
     </div>
   </div>
 </div>
