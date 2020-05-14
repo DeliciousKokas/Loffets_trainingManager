@@ -5,6 +5,12 @@
       <%= render 'shared/new_schedule' %>
     </div>
     <div class="p-2 col-lg-7">
+      <%= form_tag(users_list_path, method: "get", class: "input-group mb-3") do %>
+        <%= text_field_tag :search, '', class: 'form-control', placeholder: "ユーザーを検索" %>
+        <div class="input-group-append">
+          <%= submit_tag 'Search', name: nil, class:"btn btn-warning" %> 
+        </div>
+      <% end %>
       <%= render partial: 'shared/record_card', collection: @records, as: :record %>
     </div>
   </div>
