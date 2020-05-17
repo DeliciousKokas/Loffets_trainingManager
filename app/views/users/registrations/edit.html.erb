@@ -1,72 +1,65 @@
-<div class="container text-center">
-  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="mx-auto p-2 col-md-7">
+  <div class="card p-2">
+  <div class="form-group m-3 text-center">
+      <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    </div>
 
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="form-group">
-
-    <h3><%= @user.name %></h3>
-    <% if @user.image.url %>
-      <%= image_tag @user.image.url, class: "m-3 rounded-circle" %></td>
-    <% end %>
-    
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
-      <div class="form-group col">
-        <%= f.file_field :image %><br>
+    <div>
+      <div class="form-group m-3 text-center">
+        <h3><%= @user.name %></h3>
+        <% if @user.image.url %>
+          <%= image_tag @user.image.url, class: "m-3 rounded-circle" %></td>
+        <% end %>
       </div>
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 
-      <div class="form-group col row justify-content-center">
-        <%= f.label :description, class: 'col-form-label col-md-2' %>
-        <div class="col-md-8">
-          <%= f.text_area :description, class: 'form-control'%>
+        <div class="form-group m-3 text-center">
+          <%= f.file_field :image %><br>
         </div>
-      </div>
 
-      <div class="form-group col row justify-content-center">
-        <%= f.label :email, class: 'col-form-label col-md-2' %>
-        <div class="col-md-8">
+        <div class="form-group m-3">
+          <%= f.label :description %>
+            <%= f.text_area :description, class: 'form-control'%>
+        </div>
+
+        <div class="form-group m-3">
+          <%= f.label :email %>
           <%= f.email_field :email, class: 'form-control', autofocus: true, autocomplete: "email" %>
         </div>
-      </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
 
-      <div class="form-group col row justify-content-center">
-        <%= f.label :password, class: 'col-form-label col-md-2' %>
-        <div class="col-md-8">
+        <div class="form-group m-3">
+          <%= f.label :password %>
           <%= f.password_field :password, class: 'form-control', autocomplete: "new-password", placeholder: "パスワード変更時のみ入力してください" %>
         </div>
-      </div>
 
-      <div class="form-group col row justify-content-center">
-        <%= f.label :password_confirmation, class: 'col-form-label col-md-2' %>
-        <div class="col-md-8">
+        <div class="form-group m-3">
+          <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, class: 'form-control', autocomplete: "new-password", placeholder: "パスワード変更時のみ入力してください" %>
         </div>
-      </div>
 
-      <div class="form-group col row justify-content-center">
-        <%= f.label :current_password, class: 'col-form-label col-md-2' %>
-        <div class="col-md-8">
+        <div class="form-group m-3">
+          <%= f.label :current_password %>
           <%= f.password_field :current_password, class: 'form-control', autocomplete: "current-password" %>
         </div>
-      </div>
 
-      <div class="actions col">
-        <%= f.submit "更新", class: 'btn btn-info form-control col-md-9' %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="mt-5 pt-4 border-top" style="margin-top:35px">
-    <div class="p-3">
-      <h3>ユーザー情報を削除したい場合</h3>
+        <div class="form-group m-3 mt-5">
+          <%= f.submit "更新", class: 'btn btn-warning form-control' %>
+        </div>
+      <% end %>
     </div>
-    <div class="actions col">
-      <%= button_to "アカウント削除", registration_path(resource_name), class: 'btn btn-info form-control col-md-9', data: { confirm: "Are you sure?" }, method: :delete %>
+
+    <div class="mt-5 pt-4 border-top" style="margin-top:35px">
+      <div class="form-group m-3">
+        <label>ユーザー情報を削除したい場合</label>
+        <%= button_to "アカウント削除", registration_path(resource_name), class: 'btn btn-warning form-control', data: { confirm: "Are you sure?" }, method: :delete %>
+      </div>
     </div>
   </div>
 </div>
