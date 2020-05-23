@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <div class="d-flex justify-content-around row">
-    <div class="p-2 align-self-start col-lg-4">
+  <div class="row">
+    <div class="p-2 col-lg-4">
       <%= render 'shared/user_status' %>
       <%= render 'shared/new_schedule' %>
     </div>
-    <div class="p-2 col-lg-7">
+    <div class="p-2 col-lg-8">
       <%= form_tag(users_list_path, method: "get", class: "input-group mb-3") do %>
         <%= text_field_tag :search, '', class: 'form-control', placeholder: "ユーザーを検索" %>
         <div class="input-group-append">
