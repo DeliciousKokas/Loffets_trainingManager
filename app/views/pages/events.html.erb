@@ -8,9 +8,9 @@
           <%= f.hidden_field :record_id, value: @record.id %>
 
           <%= f.select :mywork_id, options_from_collection_for_select(@myworks, :id, :name), {}, {class: 'custom-select'} %>
-          <%= f.text_field :set, class: 'form-control', placeholder: "Set"  %>
-          <%= f.text_field :rep, class: 'form-control', placeholder: "Rep"  %>
-          <%= f.text_field :weight, class: 'form-control', placeholder: "Weight"  %>
+          <%= f.text_field :set, class: 'form-control', placeholder: "Set", required: true %>
+          <%= f.text_field :rep, class: 'form-control', placeholder: "Rep", required: true %>
+          <%= f.text_field :weight, class: 'form-control', placeholder: "Weight", required: true %>
 
           <div class="input-group-append">
             <%= f.submit "レコードを追加", class: "btn btn-warning" %>
