@@ -1,7 +1,8 @@
 class ChartsController < ApplicationController
   def show
     @myworks = current_user.mywork.all
-
+    @count_30days = current_user.count_30days
+    
     if params[:mywork_id]
       @mywork = Mywork.find(params[:mywork_id])
       @workouts = Workout.where(mywork_id: @mywork)
