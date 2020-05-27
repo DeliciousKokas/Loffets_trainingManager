@@ -9,6 +9,7 @@ class ChartsController < ApplicationController
       mywork_counter = mywork.workout.count
       @mywork_30days.push([mywork.name, mywork_counter])
     end
+    @mywork_30days = @mywork_30days.sort_by{ | k, v | v }.reverse
     
     if params[:mywork_id]
 

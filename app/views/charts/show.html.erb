@@ -1,19 +1,35 @@
-<%= @count_30days %>
-<%= pie_chart @mywork_30days %>
-
-<%= form_tag("/chart", method: "get" ) do %>
-  <div class="form-group">
-          
-    <div class="form-group col">
-      <%= select_tag(:mywork_id, options_from_collection_for_select(@myworks, :id, :name)) %>
+<div class="mx-auto p-3 col-md-10">
+  <div class="card p-2">
+    <div class="row justify-content-around">
+      <div class="col-lg-2">
+        <div class="card">
+          <h5 class="card-header">やった回数</h5>
+          <div class="card-body"> <%= @count_30days %></div>
+        </div>
+        <div class="card">
+          <h5 class="card-header">よくやる</h5>
+          <div class="card-body"> <%= @mywork_30days.first[0] %></div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <%= pie_chart @mywork_30days %>
+      </div>
     </div>
+    <%= form_tag("/chart", method: "get" ) do %>
+      <div class="form-group">
+              
+        <div class="form-group col">
+          <%= select_tag(:mywork_id, options_from_collection_for_select(@myworks, :id, :name)) %>
+        </div>
 
-    <div class="actions col">
-      <%= submit_tag "Search", class: "btn btn-warning" %>
-    </div>
+        <div class="actions col">
+          <%= submit_tag "Search", class: "btn btn-warning" %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @chart %>
+      <%= column_chart @chart %>
+    <% end %>
   </div>
-<% end %>
-
-<% if @chart %>
-  <%= column_chart @chart %>
-<% end %>
+</div>
