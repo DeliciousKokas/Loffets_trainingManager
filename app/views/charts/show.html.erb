@@ -1,3 +1,6 @@
+<%= @count_30days %>
+<%= pie_chart @mywork_30days %>
+
 <%= form_tag("/chart", method: "get" ) do %>
   <div class="form-group">
           
@@ -11,9 +14,6 @@
   </div>
 <% end %>
 
-
 <% if @chart %>
   <%= column_chart @chart %>
 <% end %>
-
-<%= @count_30days %>
