@@ -1,20 +1,26 @@
 <div class="mx-auto p-3 col-md-10">
-  <div class="card p-2">
+  <div class="card p-4">
+  　<h3>30日間のレポート</h3>
     <div class="row justify-content-around">
-      <div class="col-lg-2">
-        <div class="card">
-          <h5 class="card-header">やった回数</h5>
+      <div class="col-lg-3 py-2">
+        <div class="card text-center">
+          <h5 class="card-header">トレーニング<br>実施回数</h5>
           <div class="card-body"> <%= @count_30days %></div>
         </div>
-        <div class="card">
+        <div class="card text-center my-5">
           <h5 class="card-header">よくやる</h5>
           <div class="card-body"> <%= @mywork_30days.first[0] %></div>
         </div>
       </div>
-      <div class="col-lg-8">
+      <div class="col-lg-8 py-2">
         <%= pie_chart @mywork_30days %>
       </div>
     </div>
+
+    <% if @chart %>
+      <%= column_chart @chart %>
+    <% end %> 
+
     <%= form_tag("/chart", method: "get" ) do %>
       <div class="form-group">
               
@@ -28,8 +34,5 @@
       </div>
     <% end %>
 
-    <% if @chart %>
-      <%= column_chart @chart %>
-    <% end %>
   </div>
 </div>
