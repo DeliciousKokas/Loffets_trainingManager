@@ -11,6 +11,10 @@ class ChartsController < ApplicationController
     end
     @mywork_30days = @mywork_30days.sort_by{ | k, v | v }.reverse
     
+    if @mywork_30day.present?
+      @favorit = @mywork_30days.first[0]
+    end
+
     if params[:mywork_id]
 
       @workouts = Workout.where(mywork_id: Mywork.find(params[:mywork_id]))
