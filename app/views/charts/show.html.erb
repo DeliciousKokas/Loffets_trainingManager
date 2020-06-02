@@ -9,7 +9,11 @@
         </div>
         <div class="card text-center my-5">
           <h5 class="card-header">Favorit training</h5>
-          <div class="card-body"> <%= @mywork_30days.first[0] %></div>
+          <div class="card-body">
+            <% if @mywork_30days %>
+              <%= @mywork_30days.first[0] %>
+            <% end %>
+          </div>
         </div>
       </div>
       <div class="col-lg-8 py-2">
