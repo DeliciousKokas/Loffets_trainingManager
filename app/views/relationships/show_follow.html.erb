@@ -5,11 +5,13 @@
     </div>  
     <div class="p-2 col-lg-7">
       <h3><%= @title %></h3>
+      <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
         <% if @users.any? %>
           <%= render 'shared/user_card' %>
         <% else %>
           <%= @title %> なし！
         <% end %>
+      <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
     </div>
   </div>
 </div>

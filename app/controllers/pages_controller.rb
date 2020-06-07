@@ -46,7 +46,7 @@ class PagesController < ApplicationController
   end
 
   def feed
-    @records =  current_user.feed
+    @records =  current_user.feed.paginate(page: params[:page], per_page: 5)
     @new_record = current_user.record.new
   end
 
