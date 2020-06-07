@@ -50,4 +50,8 @@ class User < ApplicationRecord
   def feed_mine
     Record.where("user_id = ?", id).order(created_at: "DESC")
   end
+
+  def count_30days
+    record.where(start_time: (30.days.ago)..(Time.now)).count
+  end
 end

@@ -1,17 +1,34 @@
-<%= form_tag("/chart", method: "get" ) do %>
-  <div class="form-group">
-          
-    <div class="form-group col">
-      <%= select_tag(:mywork_id, options_from_collection_for_select(@myworks, :id, :name)) %>
+<div class="mx-auto p-3 col-md-10">
+  <div class="card p-4">
+  　<h2 class="text-center">30-days report</h2>
+    <div class="row justify-content-around">
+      <div class="col-lg-3 py-4">
+        <div class="card text-center">
+          <h5 class="card-header">Number of training days</h5>
+          <div class="card-body"> <%= @count_30days %></div>
+        </div>
+        <div class="card text-center my-5">
+          <h5 class="card-header">Favorit training</h5>
+          <div class="card-body"> <%= @favorit %></div>
+        </div>
+      </div>
+      <div class="col-lg-8 py-2">
+        <%= pie_chart @mywork_30days %>
+      </div>
     </div>
 
-    <div class="actions col">
-      <%= submit_tag "Search", class: "btn btn-warning" %>
-    </div>
+    <h4 class="text-center pb-3">Volumes by training</h4>
+    <% if @chart %>
+      <%= column_chart @chart %>
+    <% end %> 
+
+    <%= form_tag("/chart", method: "get", class: "input-group p-3" ) do %>
+      <%= select_tag(:mywork_id, options_from_collection_for_select(@myworks, :id, :name), class: 'form-control') %>
+
+      <div class="input-group-append">
+        <%= submit_tag "Search", class: "btn btn-warning" %>
+      </div>
+    <% end %>
+
   </div>
-<% end %>
-
-
-<% if @chart %>
-  <%= column_chart @chart %>
-<% end %>
+</div>
