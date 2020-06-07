@@ -11,7 +11,9 @@
           <%= submit_tag 'Search', name: nil, class:"btn btn-warning" %> 
         </div>
       <% end %>
+      <%= will_paginate @records, list_classes: %w(pagination justify-content-center) %>
       <%= render partial: 'shared/record_card', collection: @records, as: :record %>
+      <%= will_paginate @records, list_classes: %w(pagination justify-content-center) %>
     </div>
   </div>
 </div>
