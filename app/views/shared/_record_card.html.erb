@@ -2,6 +2,11 @@
   <div class="card-columns">
     <%= image_tag record.user.image.thumb.url, class: "rounded-circle", size: "32" %>
     <%= record.user.name %>
+    <p><a id="modal-open" class="button-link">クリックするとモーダルウィンドウを開きます。</a></p>
+    <div id="modal-content">
+      <p><%= record.user.name %></p>
+      <p><a id="modal-close" class="button-link">閉じる</a></p>
+    </div>
   </div>
   <div>
     <h4 class="card-title"><%= link_to record.title, events_path(start_time: record.start_time) %></h4>
