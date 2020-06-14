@@ -34,16 +34,17 @@ p{
   opacity: 1;
 }
 
-#modal-content{
-	width:50%;
-  margin: 5% auto;
+.modal-content{
+	width:70%;
+  margin: 150px 15%;
   left: 0;
   right: 0;
 	padding:10px 20px;
 	border:2px solid #aaa;
 	background:#fff;
   z-index:2;
-  position:fixed
+  position:fixed;
+  display:none;
 }
 
 #modal-overlay{

@@ -1,9 +1,8 @@
 <div class="card mx-auto" style="padding:10px; margin-bottom:20px">
   <div class="card-columns">
     <%= image_tag record.user.image.thumb.url, class: "rounded-circle", size: "32" %>
-    <%= record.user.name %>
-    <p><a id="modal-open" class="button-link">クリックするとモーダルウィンドウを開きます。</a></p>
-    <div id="modal-content">
+    <a id="modal-open-<%= record.id %>" class="button-link"><%= record.user.name %></a>
+    <div id="<%= record.id %>" class="modal-content fixed-top">
       <p><%= record.user.name %></p>
       <p><a id="modal-close" class="button-link">閉じる</a></p>
     </div>
