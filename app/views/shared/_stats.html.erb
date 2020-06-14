@@ -5,8 +5,8 @@
       <%= @user.following.count %>
     </strong>
     following
-  </a>
-  <a href="<%= followers_user_path(@user) %>">
+  </a>   
+  <a class="ml-2" href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
       <%= @user.followers.count %>
     </strong>
