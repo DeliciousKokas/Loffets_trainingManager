@@ -1,7 +1,9 @@
 <div class="container-fluid p-3">
   <div class="row">
     <div class="p-2 col-lg-4">
-      <%= render 'shared/user_status' %>
+      <div class="card mx-3 p-3">
+        <%= render partial: 'shared/user_status', locals: {user_check: @user} %>
+      </div>
       <%= render 'shared/new_schedule' %>
     </div>
     <div class="p-2 col-lg-8">

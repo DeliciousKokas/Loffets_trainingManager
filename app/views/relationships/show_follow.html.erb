@@ -1,14 +1,16 @@
 <div class="container-fluid">
   <div class="d-flex justify-content-around row">
     <div class="p-2 align-self-start col-lg-4">
-      <%= render 'shared/user_status' %>
+      <div class="card mx-3 p-3">
+        <%= render partial: 'shared/user_status', locals: {user_check: @user} %>
+      </div>
     </div>  
     <div class="p-2 col-lg-7">
       <h3><%= @title %></h3>
         <% if @users.any? %>
-          <%= render 'shared/user_card' %>
+          <%= render partial: 'shared/user_card', locals: {user_check: @user} %>
         <% else %>
-          <%= @title %> なし！
+          <%= @title %> "You don't have any"
         <% end %>
       <%= will_paginate @users, list_classes: %w(pagination justify-content-center) %>
     </div>
