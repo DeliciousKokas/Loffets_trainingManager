@@ -1,12 +1,18 @@
-<div class="card mx-auto" style="padding:10px; margin-bottom:20px">
-  <div class="card-columns">
-    <%= image_tag record.user.image.thumb.url, class: "rounded-circle", size: "32" %>
-    <%= record.user.name %>
+<div class="card mx-auto my-4 p-3">
+  <div class="mb-3">
+    <span class="badge badge-info"><%= record.start_time %></span>
   </div>
-  <div>
+  <div class="card-columns mb-2">
+    <%= image_tag record.user.image.thumb.url, class: "rounded-circle", size: "48" %>
+    <a id="modal-open-<%= record.id %>" class="button-link align-middle ml-2" style="font-size: 24px"><%= record.user.name %></a>
+    <div id="<%= record.id %>" class="modal-content fixed-top">
+      <%= render partial: 'shared/user_status', locals: {user_check: record.user} %>
+      <p class="text-right"><a id="modal-close" class="button-link">exit</a></p>
+    </div>
+  </div>
+  <div class="mb-3">
     <h4 class="card-title"><%= link_to record.title, events_path(start_time: record.start_time) %></h4>
     <p class="card-text"><%= record.description %></p>
-    <%= record.start_time %>
   </div>
   <table class="table">
     <tr>

@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   # before_action :calculate_vol, only: :create
 
   def users
-    @users = current_user.search(params[:search])
+    @users = current_user.search(params[:search]).paginate(page: params[:page], per_page: 30)
   end
   
   def main
@@ -46,6 +46,7 @@ class PagesController < ApplicationController
   end
 
   def feed
+    @user = current_user
     @records =  current_user.feed.paginate(page: params[:page], per_page: 5)
     @new_record = current_user.record.new
   end

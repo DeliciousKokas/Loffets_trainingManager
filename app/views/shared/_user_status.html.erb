@@ -1,17 +1,17 @@
-<div class="card mx-3 p-2">
-  <div class="card-columns">
-    <%= image_tag current_user.image.url, class: "rounded-circle", size: "52" %>
-      <p style="margin:0px"><%= current_user.name %></p>
-      <p style="margin:0px"><%= current_user.record.count %> records</p>
+<div class="card-columns d-flex justify-content-start p-1">
+  <%= image_tag user_check.image.url, class: "rounded-circle", size: "96" %>
+  <div class="align-self-center ml-4 p-1">
+    <h4><%= user_check.name %></h4>
+    <h6><%= user_check.record.count %> records</h6>
   </div>
-  <div>
-    <%= render 'shared/stats' %>
-  </div>
-  <div>
-    <% if current_user.description %>
-      <%= current_user.description %>
-    <% else %>
-      <%= link_to "自己紹介を追加する", edit_user_registration_path %>
-    <% end %>
-  </div>
+</div>
+<div class="p-1">
+  <%= render partial: 'shared/stats', locals: {user_check: user_check} %>
+</div>
+<div class="p-1 border-top">
+  <% if user_check.description %>
+    <%= user_check.description %>
+  <% elsif current_user == user_check %>
+    Please introduce yourself from <%= link_to "here", edit_user_registration_path, class: "badge badge-primary" %>
+  <% end %>
 </div>

@@ -3,16 +3,18 @@
     <div class="p-3 mr-3 card text-center" style="width:150px">
       <%= image_tag user.image.url, class: "rounded-circle mx-auto", size: "100" %>
       <%= user.name %>
+      <% if current_user == user_check %>
         <% if current_user.following?(user) %>
-          <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
-            <%= f.submit "Unfollow", class: "btn btn-secondary" %>
-          <% end %>
+            <%= form_for(current_user.active_relationships.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
+              <%= f.submit "Unfollow", class: "btn btn-secondary" %>
+            <% end %>
         <% else %>
-          <%= form_for(current_user.active_relationships.build) do |f| %>
-            <div><%= hidden_field_tag :followed_id, user.id %></div>
-            <%= f.submit "Follow", class: "btn btn-primary" %>
-          <% end %>
+            <%= form_for(current_user.active_relationships.build) do |f| %>
+              <div><%= hidden_field_tag :followed_id, user.id %></div>
+              <%= f.submit "Follow", class: "btn btn-primary" %>
+            <% end %>
         <% end %>
+      <% end %>
     </div> 
   <% end %>
 </div>
