@@ -66,7 +66,7 @@ RSpec.describe 'Feed_page', type: :system do
       expect(page).to have_content "0 followers"
       click_on "follower"
       expect(page).to have_current_path "/users/#{user1.id}/followers"
-      expect(page).to have_content "Followers なし！"
+      expect(page).to have_content "You don't have any"
     }.to change(user1.followers, :count).by(-1)
   end
 end
