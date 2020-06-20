@@ -13,11 +13,11 @@
           <%= f.text_field :weight, class: 'form-control', placeholder: "Weight", required: true %>
 
           <div class="input-group-append">
-            <%= f.submit "レコードを追加", class: "btn btn-warning" %>
+            <%= f.submit "Add", class: "btn btn-warning" %>
           </div>
         </div>
       <% end %>
-      <%= link_to " 実施したトレーニングが一覧にいなかったら?", myworks_path %>
+      <%= link_to "click here", myworks_path, class: "badge badge-primary" %> If you don't have tranning you've done 
     </div>
   </div>
 </div>
