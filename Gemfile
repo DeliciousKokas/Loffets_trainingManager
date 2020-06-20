@@ -55,13 +55,16 @@ gem "simple_calendar", "~> 2.0"
 gem "chartkick"
 gem 'groupdate'
 
-#add to upload image
+# add to upload image
 gem 'carrierwave'
 gem 'rmagick'
 
-#add to paginate
+# add to paginate
 gem 'will_paginate'
 gem 'will_paginate-bootstrap4'
+
+# add to set english to default
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

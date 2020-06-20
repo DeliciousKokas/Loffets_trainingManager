@@ -48,7 +48,7 @@ RSpec.describe 'Users', type: :system do
     click_on "Profile"
     expect(page).to have_current_path edit_user_registration_path
 
-    click_on "更新"
+    click_on "Update"
     expect(page).to have_content "Current password can't be blank"
 
   end
