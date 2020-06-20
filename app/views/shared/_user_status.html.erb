@@ -9,7 +9,7 @@
   <%= render partial: 'shared/stats', locals: {user_check: user_check} %>
 </div>
 <div class="p-1 border-top">
-  <% if user_check.description %>
+  <% if user_check.description.present? %>
     <%= user_check.description %>
   <% elsif current_user == user_check %>
     Please introduce yourself from <%= link_to "here", edit_user_registration_path, class: "badge badge-primary" %>
