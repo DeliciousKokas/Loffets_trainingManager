@@ -38,7 +38,7 @@ RSpec.describe 'Main_page', type: :system do
       fill_in "Set", with: 4
       fill_in "Rep", with: 10
       fill_in "Weight", with: 50
-      click_on "レコードを追加"
+      click_on "Add"
       
       expect(page).to have_current_path "/events?start_time=#{record.start_time}"
       expect(page).to have_content mywork.workout.first.vol
