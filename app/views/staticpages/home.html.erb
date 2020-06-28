@@ -1,7 +1,7 @@
-<main class="container-fluid" style="position:relative">
+<main class="container-fluid bg-white position-relative">
   <%= image_tag("workout/1.jpg", width:"100%") %>
 
-  <div class="container-fluid resize" style="position: absolute; top: 30%; text-align: center">
+  <div class="container-fluid resize position-absolute text-center">
     <div class="container-fluid fadeIn" style="background: rgba(192,192,192,0.4); color:#ffffff; font-size: 5vmin; font-weight: bold; padding: 10px; margin-bottom: 20px">
       <p>Your personal manager</p>
       <p>leading your body perfect</p>
@@ -9,9 +9,9 @@
     <%= link_to "Register Now!", new_user_registration_path, class: "btn btn-outline-warning btn-lg"%>
   </div>
 
-  <div class="text-center">
-    <h1>About</h1>
-    <div class="row mx-5">
+  <div class="text-center col-md-10 mx-auto" style="padding:40px">
+    <h1 class="p-2">About</h1>
+    <div class="row m-5">
       <div class="col-12", id="about">
         <p>
           A tool that better manages training results.
@@ -20,38 +20,37 @@
       </div>
     </div>
     
-    <h1>Feature</h1>
-    <div class="row justify-content-around m-5">
+    <h1 class="p-2">Feature</h1>
+    <div class="row justify-content-around align-items-center m-5">
       <div class="col-6 sbox position-relative">
         <%= image_tag "home/calendar.png", width:"70%", class:"position-absolute", style:"top: 0; left: 0;"  %>
         <%= image_tag "home/record.png", width:"70%", class:"position-absolute", style:"top: 25%; left: 25%;" %>
       </div>
       <div class="col-6">
         <p>
-          A tool that better manages training results.
-          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+          You can record your daily workouts and manage them in chronological order.
+          Since vol is automatically calculated when a record is registered, it can be tracked more smoothly than ever even if the number of times or weight changes.
         </p>
       </div>
     </div>
-    <div class="row justify-content-around m-5">
+    <div class="row justify-content-around align-items-center m-5">
       <div class="col-6">
         <p>
-          A tool that better manages training results.
-          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+          The registered exercises can be analyzed on the Chart page for one month.
+          As for the frequency of exercise, you can check the change in vol, the ratio of exercise performed, etc.
         </p>
       </div>
       <div class="col-6">
         <%= image_tag "home/feed.png", width:"100%" %>
       </div>
     </div>
-    <div class="row justify-content-around m-5">
+    <div class="row justify-content-around align-items-center m-5">
       <div class="col-6">
         <%= image_tag "home/chart.png", width:"100%" %>
       </div>
       <div class="col-6">
         <p>
-          A tool that better manages training results.
-          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+          You can also see the activity of other users you have designated to follow and share your progress with your friends.
         </p>
       </div>
     </div>
