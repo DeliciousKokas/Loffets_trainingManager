@@ -1,21 +1,70 @@
-<main class="container-fluid" style="position:relative">
+<main class="container-fluid bg-white position-relative">
   <%= image_tag("workout/1.jpg", width:"100%") %>
 
-  <div class="container-fluid" style="position: absolute; top: 30%; text-align: center">
+  <div class="container-fluid resize position-absolute text-center">
     <div class="container-fluid fadeIn" style="background: rgba(192,192,192,0.4); color:#ffffff; font-size: 5vmin; font-weight: bold; padding: 10px; margin-bottom: 20px">
       <p>Your personal manager</p>
       <p>leading your body perfect</p>
     </div>
     <%= link_to "Register Now!", new_user_registration_path, class: "btn btn-outline-warning btn-lg"%>
   </div>
-  <div class="row">
-    <div class="col-12">
+
+  <div class="text-center col-md-11 mx-auto" id="about" style="padding:40px">
+    <h1 class="p-2">About</h1>
+    <div class="row m-5">
+      <div class="col-12">
+        <p id="feature" >
+          A tool that manages training results better.</p>
+          record your results to remain in a visible form, so you can check your growth while maintaining your personal motivation.
+          just try recording your first results and see how it works.
+        </p>
+      </div>
     </div>
+    
+    <h1 class="p-2">Feature</h1>
+    <div class="row justify-content-around align-items-center m-5">
+      <div class="col-6 sbox position-relative">
+        <%= image_tag "home/calendar.png", width:"70%", class:"position-absolute", style:"top: 0; left: 0;"  %>
+        <%= image_tag "home/record.png", width:"70%", class:"position-absolute", style:"top: 25%; left: 25%;" %>
+      </div>
+      <div class="col-6">
+        <p>
+          You can record your daily workouts and manage them in timeline.
+          Volume which quantified momentum will be automatically calculated when you register your records, it makes easy to track your growth and give better information about performance you have.
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-around align-items-center m-5">
+      <div class="col-6">
+        <p>
+          You can also see the activity of other users you following. 
+          share your progress with your friends. 
+          it will help you get motivated.
+        </p>
+      </div>
+      <div class="col-6">
+        <%= image_tag "home/feed.png", width:"100%" %>
+      </div>
+    </div>
+    <div class="row justify-content-around align-items-center m-5">
+      <div class="col-6">
+        <%= image_tag "home/chart.png", width:"100%" %>
+      </div>
+      <div class="col-6">
+        <p>
+          The registered record will be analyzed on the chart page. 
+          you can check clear at a glance here frequency of exercise, changing your volume size, and rate of exercise you have done.
+        </p>
+      </div>
+    </div>
+
   </div>
 </main>
 
 <script>
   $(function() {
     $('.fadeIn').addClass('show');
+    width = ($(window).width())/5 - 70;
+    $('.resize').css("top", width + "px");
   });
 </script>
