@@ -3,12 +3,15 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
       <%= link_to image_tag("dumbel.png", width: '36') + " Loffets", root_path, class: "navbar-brand", align: "middle"%>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "About", "#", class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Test", "#", class: "nav-link" %>
-        </li>
+        <% if user_signed_in? %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "About", "#about", class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Test", "#", class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
 
       <% if user_signed_in? %>

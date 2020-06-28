@@ -75,3 +75,13 @@ p{
 	cursor:pointer;
 	color:#f00;
 }
+
+.sbox{
+	width: 50%;
+    
+  &:before {
+    content: "";
+    display: block;
+    padding-top: 75%;
+  }
+}

@@ -11,7 +11,7 @@ class ChartsController < ApplicationController
     end
     @mywork_30days = @mywork_30days.sort_by{ | k, v | v }.reverse
     
-    if @mywork_30day.present?
+    if @mywork_30days.present?
       @favorit = @mywork_30days.first[0]
     end
 
@@ -21,7 +21,7 @@ class ChartsController < ApplicationController
       
       @chart = []
       @workouts.each do |workout|
-        @chart.push([Record.find(workout.record_id).start_time, workout.weight])
+        @chart.push([Record.find(workout.record_id).start_time, workout.vol])
       end
 
       @chart = @chart.sort

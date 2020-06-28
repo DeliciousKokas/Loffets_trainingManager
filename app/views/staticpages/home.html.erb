@@ -1,21 +1,68 @@
 <main class="container-fluid" style="position:relative">
   <%= image_tag("workout/1.jpg", width:"100%") %>
 
-  <div class="container-fluid" style="position: absolute; top: 30%; text-align: center">
+  <div class="container-fluid resize" style="position: absolute; top: 30%; text-align: center">
     <div class="container-fluid fadeIn" style="background: rgba(192,192,192,0.4); color:#ffffff; font-size: 5vmin; font-weight: bold; padding: 10px; margin-bottom: 20px">
       <p>Your personal manager</p>
       <p>leading your body perfect</p>
     </div>
     <%= link_to "Register Now!", new_user_registration_path, class: "btn btn-outline-warning btn-lg"%>
   </div>
-  <div class="row">
-    <div class="col-12">
+
+  <div class="text-center">
+    <h1>About</h1>
+    <div class="row mx-5">
+      <div class="col-12", id="about">
+        <p>
+          A tool that better manages training results.
+          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+        </p>
+      </div>
     </div>
+    
+    <h1>Feature</h1>
+    <div class="row justify-content-around m-5">
+      <div class="col-6 sbox position-relative">
+        <%= image_tag "home/calendar.png", width:"70%", class:"position-absolute", style:"top: 0; left: 0;"  %>
+        <%= image_tag "home/record.png", width:"70%", class:"position-absolute", style:"top: 25%; left: 25%;" %>
+      </div>
+      <div class="col-6">
+        <p>
+          A tool that better manages training results.
+          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-around m-5">
+      <div class="col-6">
+        <p>
+          A tool that better manages training results.
+          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+        </p>
+      </div>
+      <div class="col-6">
+        <%= image_tag "home/feed.png", width:"100%" %>
+      </div>
+    </div>
+    <div class="row justify-content-around m-5">
+      <div class="col-6">
+        <%= image_tag "home/chart.png", width:"100%" %>
+      </div>
+      <div class="col-6">
+        <p>
+          A tool that better manages training results.
+          Records remain in a visible form, so you can check your growth while maintaining your personal motivation.
+        </p>
+      </div>
+    </div>
+
   </div>
 </main>
 
 <script>
   $(function() {
     $('.fadeIn').addClass('show');
+    width = ($(window).width())/5 - 70;
+    $('.resize').css("top", width + "px");
   });
 </script>
