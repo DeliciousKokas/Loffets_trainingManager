@@ -1,31 +1,32 @@
-<div class="mx-auto p-2 col-md-7">
-  <div class="card p-2">
-  <h2 class="text-center">Log in</h2>
+<div class="container-fluid p-3">
+  <div class="row">
+    <div class="mx-auto p-3 col-md-7">
+      <div class="card p-2">
+      <h2 class="text-center">Log in</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group m-3">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter email", class: 'form-control', required:true %>
-      </div>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group m-3">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Enter email", class: 'form-control', required:true %>
+          </div>
 
-      <div class="form-group m-3">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter Password", class: 'form-control', required:true %>
-        <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+          <div class="form-group m-3">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: "Enter Password", class: 'form-control', required:true %>
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <%= f.check_box :remember_me %>
+                <%= f.label :remember_me %>
+              </div>
+            <% end %>
+          </div>
+      
+          <div class="form-group m-3 mt-5">
+            <%= f.submit "Log in", class: "btn btn-warning form-control"%>
           </div>
         <% end %>
-      </div>
-  
-      <div class="form-group m-3 mt-5">
-        <%= f.submit "Log in", class: "btn btn-warning form-control"%>
-      </div>
-    <% end %>
 
-    <div class="form-group m-3">
-      <%= render "users/shared/links" %>
+      </div>
     </div>
   </div>
 </div>
