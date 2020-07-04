@@ -1,6 +1,6 @@
 # Loffets
 
-Loffetsはトレーニング結果を効率的に管理するためのアプリケーションです。
+Loffetsはトレーニング結果を効率的に管理するためのアプリケーションです。  
 https://www.loffets.com/
 
 ## 使用技術
@@ -19,6 +19,8 @@ https://www.loffets.com/
 - CircleCI
 - Docker (Docker Compose)
 
+![AWS_architecture](https://github.com/DeliciousKokas/myapp/blob/master/AWS_architecture.png?raw=true)
+
 ## 機能一覧
 ### ユーザー関連機能
 - 新規登録・編集・ログイン・ログアウト
@@ -29,8 +31,8 @@ https://www.loffets.com/
 - 他のユーザー情報表示
 
 ### 記録管理機能
-- 日付登録・閲覧・カレンダー管理
-- マイトレーニングの登録・閲覧
+- トレーニング日登録・閲覧・カレンダー表示
 - トレーニング実績の登録・閲覧
 - トレーニング実績のフィード
+- マイトレーニングの登録・閲覧
 - レコード分析 (頻度、種類、割合、推移)
