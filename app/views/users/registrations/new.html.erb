@@ -19,9 +19,8 @@
 
           <div class="form-group m-3">
             <%= f.label :password %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br />
+            <em>(8 characters minimum)</em>
+            <br />
             <%= f.password_field :password, autocomplete: "new-password", placeholder: "Enter Password", class: 'form-control', required:true %>
           </div>
 
@@ -34,6 +33,9 @@
             <%= f.submit "Sign up", class: "btn btn-warning form-control" %>
           </div>
         <% end %>
+        <div class="form-group mx-3">
+          <%= render 'users/sessions/testuser' %>
+        </div>
       </div>
     </div>
   </div>

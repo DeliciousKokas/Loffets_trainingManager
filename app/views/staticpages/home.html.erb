@@ -6,7 +6,8 @@
       <p>Your personal manager</p>
       <p>leading your body perfect</p>
     </div>
-    <%= link_to "Register Now!", new_user_registration_path, class: "btn btn-outline-warning btn-lg"%>
+    <%= link_to "Register Now!", new_user_registration_path, class: "btn btn-outline-warning btn-lg mb-2"%>
+    <%= render 'users/sessions/testuser' %>
   </div>
 
   <div class="text-center col-md-11 mx-auto" id="about" style="padding:40px">
@@ -64,7 +65,7 @@
 <script>
   $(function() {
     $('.fadeIn').addClass('show');
-    width = ($(window).width())/5 - 70;
+    width = ($(window).width())/5 - 80;
     $('.resize').css("top", width + "px");
   });
 </script>

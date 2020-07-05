@@ -1,0 +1,9 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= f.hidden_field :email ,value: "test1@test.com" %>
+  <%= f.hidden_field :password ,value: "Test111!" %>
+  <% if path = "/" %>
+    <%= f.submit "Try Sample user", class: "btn btn-outline-warning btn-lg" %>
+  <% else %>
+    <%= f.submit "Try Sample user", class: "btn btn-warning form-control" %>
+  <% end %>
+<% end %>
