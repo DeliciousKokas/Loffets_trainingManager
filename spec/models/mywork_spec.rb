@@ -44,11 +44,11 @@ RSpec.describe Mywork, type: :model do
     expect(mywork_21_name).to_not be_valid
   end
 
-  it "is invalid when description is more than 100 description" do
-    count_100 = "a" * 100 
-    mywork_100_des = FactoryBot.build(:mywork, description: count_100, user_id:@user.id)
-    mywork_101_des = FactoryBot.build(:mywork, description: count_100+"101", user_id:@user.id)
-    expect(mywork_100_des).to be_valid
-    expect(mywork_101_des).to_not be_valid
+  it "is invalid when description is more than 255 description" do
+    count_255 = "a" * 255 
+    mywork_255_des = FactoryBot.build(:mywork, description: count_255, user_id:@user.id)
+    mywork_256_des = FactoryBot.build(:mywork, description: count_256+"256", user_id:@user.id)
+    expect(mywork_255_des).to be_valid
+    expect(mywork_256_des).to_not be_valid
   end
 end
