@@ -3,6 +3,6 @@ class Mywork < ApplicationRecord
   has_many :workout, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 20 }, uniqueness: { scope: :user_id }
-  validates :description, length: { maximum: 100 }
+  validates :description, length: { maximum: 255 }
 end
 

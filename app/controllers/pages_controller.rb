@@ -41,8 +41,12 @@ class PagesController < ApplicationController
 
   def myworks_create
     @new_mywork = Mywork.new(mywork_params)
-    @new_mywork.save
-    redirect_back(fallback_location: "/main")
+    if @new_mywork.save
+      redirect_back(fallback_location: "/main")
+    else
+      flash[:alert] = "Description field should be shorter than 255 characters."
+      redirect_back(fallback_location: "/main")
+    end
   end
 
   def feed
