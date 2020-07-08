@@ -12,8 +12,12 @@ class PagesController < ApplicationController
 
   def new_record
     @new_record = Record.new(new_record_params)
-    @new_record.save
-    redirect_to events_path(start_time: @new_record.start_time)
+    if @new_record.save
+      redirect_to events_path(start_time: @new_record.start_time)
+    else
+      flash[:alert] = @new_record.errors
+      redirect_back(fallback_location: "/main")
+    end
   end
 
   def events
@@ -44,7 +48,7 @@ class PagesController < ApplicationController
     if @new_mywork.save
       redirect_back(fallback_location: "/main")
     else
-      flash[:alert] = "Description field should be shorter than 255 characters."
+      flash[:alert] = @new_mywork.errors
       redirect_back(fallback_location: "/main")
     end
   end
