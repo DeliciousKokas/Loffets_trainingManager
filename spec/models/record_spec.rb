@@ -37,19 +37,20 @@ RSpec.describe Record, type: :model do
     expect(record_2.errors[:start_time]).to include("has already been taken")
   end
 
-  it "is invalid when title is more than 20 characters" do
-    record_20_title = FactoryBot.build(:record, title: "12345678901234567890", user_id:@user.id)
-    record_21_title = FactoryBot.build(:record, title: "123456789012345678901", user_id:@user.id)
-    expect(record_20_title).to be_valid
-    expect(record_21_title).to_not be_valid
+  it "is invalid when title is more than 50 characters" do
+    count_50 = "a" * 50
+    record_50_title = FactoryBot.build(:record, title: count_50, user_id:@user.id)
+    record_51_title = FactoryBot.build(:record, title: count_50+"51", user_id:@user.id)
+    expect(record_50_title).to be_valid
+    expect(record_51_title).to_not be_valid
   end
 
-  it "is invalid when description is more than 100 description" do
-    count_100 = "a" * 100 
-    record_100_des = FactoryBot.build(:record, description: count_100, user_id:@user.id)
-    record_101_des = FactoryBot.build(:record, description: count_100+"101", user_id:@user.id)
-    expect(record_100_des).to be_valid
-    expect(record_101_des).to_not be_valid
+  it "is invalid when description is more than 255 description" do
+    count_255 = "a" * 255
+    record_255_des = FactoryBot.build(:record, description: count_255, user_id:@user.id)
+    record_256_des = FactoryBot.build(:record, description: count_255+"256", user_id:@user.id)
+    expect(record_255_des).to be_valid
+    expect(record_256_des).to_not be_valid
   end
 
 end
