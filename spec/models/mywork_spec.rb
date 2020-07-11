@@ -37,11 +37,12 @@ RSpec.describe Mywork, type: :model do
     expect(mywork_2.errors[:name]).to include("has already been taken")
   end
 
-  it "is invalid when name is more than 20 characters" do
-    mywork_20_name = FactoryBot.build(:mywork, name: "12345678901234567890", user_id:@user.id)
-    mywork_21_name = FactoryBot.build(:mywork, name: "123456789012345678901", user_id:@user.id)
-    expect(mywork_20_name).to be_valid
-    expect(mywork_21_name).to_not be_valid
+  it "is invalid when name is more than 50 characters" do
+    count_50 = "a" * 50
+    mywork_50_name = FactoryBot.build(:mywork, name: count_50, user_id:@user.id)
+    mywork_51_name = FactoryBot.build(:mywork, name: count_50+"51", user_id:@user.id)
+    expect(mywork_50_name).to be_valid
+    expect(mywork_51_name).to_not be_valid
   end
 
   it "is invalid when description is more than 255 description" do

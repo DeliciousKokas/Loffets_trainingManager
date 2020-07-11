@@ -3,6 +3,8 @@
 Loffetsはトレーニング結果を効率的に管理するためのアプリケーションです。  
 https://www.loffets.com/
 
+![Usecase](https://github.com/DeliciousKokas/myapp/blob/master/Usecase.png?raw=true)
+
 ## 使用技術
 ### 言語
 - Ruby 2.6.1
