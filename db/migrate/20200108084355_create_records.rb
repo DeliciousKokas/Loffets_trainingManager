@@ -8,6 +8,6 @@ class CreateRecords < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
-    add_index :records, [:user_id, :start_time]
+    add_index :records, %i[user_id start_time]
   end
 end
