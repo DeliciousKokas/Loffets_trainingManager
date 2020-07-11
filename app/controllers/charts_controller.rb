@@ -9,16 +9,14 @@ class ChartsController < ApplicationController
       mywork_counter = mywork.workout.count
       @mywork_30days.push([mywork.name, mywork_counter])
     end
-    @mywork_30days = @mywork_30days.sort_by{ | k, v | v }.reverse
-    
-    if @mywork_30days.present?
-      @favorit = @mywork_30days.first[0]
-    end
+    @mywork_30days = @mywork_30days.sort_by { |_k, v| v }.reverse
+
+    @favorit = @mywork_30days.first[0] if @mywork_30days.present?
 
     if params[:mywork_id]
 
       @workouts = Workout.where(mywork_id: Mywork.find(params[:mywork_id]))
-      
+
       @chart = []
       @workouts.each do |workout|
         @chart.push([Record.find(workout.record_id).start_time, workout.vol])

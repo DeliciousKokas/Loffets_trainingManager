@@ -18,12 +18,12 @@ module Myapp
 
     config.generators do |g|
       g.test_framework :rspec,
-      fixtures: false,
-      system_specs: true,
-      controller_specs: false,
-      view_specs: false,
-      helper_specs: false,
-      routing_specs: false
+                       fixtures: false,
+                       system_specs: true,
+                       controller_specs: false,
+                       view_specs: false,
+                       helper_specs: false,
+                       routing_specs: false
     end
 
     config.i18n.default_locale = :en

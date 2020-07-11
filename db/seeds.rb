@@ -6,42 +6,42 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create!(name: "Alex", 
-              email: "sample_user@loffets.com", 
-              password: "Test111!")
+User.create!(name: 'Alex',
+             email: 'sample_user@loffets.com',
+             password: 'Test111!')
 
 5.times do |i|
   x = i + 1
-  User.create!(name: "test#{x}", 
-              email: "test#{x}@test.com", 
-              password: "Test#{x}#{x}#{x}!")
+  User.create!(name: "test#{x}",
+               email: "test#{x}@test.com",
+               password: "Test#{x}#{x}#{x}!")
 end
 
 5.times do |u|
   5.times do |i|
     x = i + 1
-    Record.create(title:"record#{x}",
+    Record.create(title: "record#{x}",
                   start_time: i.days.since,
-                  user_id: u+1)
+                  user_id: u + 1)
   end
 end
 
 5.times do |u|
   5.times do |i|
-    Mywork.create(name:"mywork#{i+1}",
-                  user_id: u+1)
+    Mywork.create(name: "mywork#{i + 1}",
+                  user_id: u + 1)
   end
 end
 
 5.times do |u|
   5.times do |i|
     x = (u * 5) + 1
-    Workout.create(set: 4, 
-                  rep: 10, 
-                  weight: 45+i, 
-                  vol: 1,
-                  record_id: x+i, 
-                  mywork_id: x)
+    Workout.create(set: 4,
+                   rep: 10,
+                   weight: 45 + i,
+                   vol: 1,
+                   record_id: x + i,
+                   mywork_id: x)
   end
 end
 

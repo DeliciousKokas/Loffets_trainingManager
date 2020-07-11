@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'staticpages', type: :system do
-  it "have right to access guest pages" do
+  it 'have right to access guest pages' do
     visit root_path
     visit new_user_session_path
     visit new_user_password_path

@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def users
     @users = current_user.search(params[:search]).paginate(page: params[:page], per_page: 30)
   end
-  
+
   def main
     @records = current_user.record.all
     @new_record = current_user.record.new
@@ -16,7 +16,7 @@ class PagesController < ApplicationController
       redirect_to events_path(start_time: @new_record.start_time)
     else
       flash[:alert] = @new_record.errors
-      redirect_back(fallback_location: "/main")
+      redirect_back(fallback_location: '/main')
     end
   end
 
@@ -30,13 +30,13 @@ class PagesController < ApplicationController
     @new_workout = Workout.new(workout_params)
     @new_workout.calculate_vol
     @new_workout.save
-    redirect_back(fallback_location: "/main")
+    redirect_back(fallback_location: '/main')
   end
 
   def destroy
     @workout = Workout.find(params[:id])
     @workout.destroy
-    redirect_back(fallback_location: "/main")
+    redirect_back(fallback_location: '/main')
   end
 
   def myworks
@@ -46,10 +46,10 @@ class PagesController < ApplicationController
   def myworks_create
     @new_mywork = Mywork.new(mywork_params)
     if @new_mywork.save
-      redirect_back(fallback_location: "/main")
+      redirect_back(fallback_location: '/main')
     else
       flash[:alert] = @new_mywork.errors
-      redirect_back(fallback_location: "/main")
+      redirect_back(fallback_location: '/main')
     end
   end
 
@@ -59,13 +59,12 @@ class PagesController < ApplicationController
     @new_record = current_user.record.new
   end
 
-
   # def calculate_vol
   #   cal = Workout.find(self.params[:workout][:set])
   #   debugger
   #   vol = params[:workout][:set] * params[:workout][:rep] * params[:workout][:weight]
   # end
-  
+
   private
 
   def workout_params
@@ -79,5 +78,4 @@ class PagesController < ApplicationController
   def new_record_params
     params.require(:record).permit(:user_id, :title, :description, :start_time)
   end
-
-end 
+end
